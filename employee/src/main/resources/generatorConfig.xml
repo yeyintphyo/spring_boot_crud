@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration 
+	PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+	"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  	<properties resource="application.properties"/>
+  	<classPathEntry location="${mbg.jdbc.driver-location}"/>
+	<context id="context1" >
+		<property name="javaFileEncoding" value="UTF-8"/>
+		<property name="beginningDelimiter" value="`"/>
+		<property name="endingDelimiter" value="`"/>
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+    <jdbcConnection 
+    	connectionURL="${mbg.jdbc.url}" 
+    	driverClass="${mbg.jdbc.driver-class-name}" 
+    	password="${mbg.jdbc.password}" 
+    	userId="${mbg.jdbc.username}" />
+    <javaModelGenerator 
+    	targetPackage="${mbg.target-package.domain}" 
+    	targetProject="${mbg.target-project.java}" />
+    <sqlMapGenerator 
+    	targetPackage="${mbg.target-package.mapper}" 
+    	targetProject="${mbg.target-project.java}" />
+    <javaClientGenerator 
+    	targetPackage="${mbg.target-package.mapper}" 
+    	targetProject="${mbg.target-project.java}" type="ANNOTATEDMAPPER" />
+  	<table tableName="employee" schema="migrate_prj" delimitIdentifiers="true"
+		delimitAllColumns="true" />
+  </context>
+</generatorConfiguration>

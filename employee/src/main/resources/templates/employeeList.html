@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title>Employeelist</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+	 
+	</head>
+    <body>
+    	<div th:replace="fragments/header :: header"></div>
+    	<div class="container">
+		<div class="col-md-4 col-md-offset-4">
+			<h1>Employees Table</h1>
+		</div>    
+		<div style="padding:0 20px">
+		    <table class="table table-striped">
+				<tr>
+				    <th>Employee Name</th>
+				    <th>Email</th>
+				    <th>Phone</th>
+				    <th>Address</th>
+				    <th>gender</th>
+				    <th>Remark</th>
+				    <th></th>
+				    <th></th>
+				</tr>		            
+	            <tr th:each="emp : ${employeeList}">
+	                <td th:text="${emp.employeeName}"></td>
+	                <td th:text="${emp.email}"></td>
+	                <td th:text="${emp.phone}"></td>
+	                <td th:text="${emp.address}"></td>
+	                <td th:text="${emp.gender}"></td>
+	                <td th:text="${emp.remark}"></td>
+	                <td>
+	                	<a th:href="@{/edit/{id}(id=${emp.employeeId})}" class="btn btn-success btn-xs" >edit</a>
+					</td>
+					<td>	                	 
+	                	<a th:href="@{/delete/{id}(id=${emp.employeeId})}" class="btn btn-success btn-xs" >delete</a>
+	                </td>
+	            </tr>
+		    </table>		
+		</div>
+		</div>
+		<div class="col-md-12" th:replace="fragments/footer :: footer"></div>
+    </body>
+</html>
